@@ -1,0 +1,839 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+\title{Repaso Cálculo}
+\date{}
+
+\begin{document}
+
+% table of contents
+\maketitle
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Límite y Continuidad}
+
+\subsection{Teorema del Sándwich (o del Encajonamiento)}
+Sea $a \in \mathbb{R}$ y supongamos que existen funciones $f, g, h$ definidas en un entorno de $a$, salvo quizás en $a$ mismo, tales que:
+\[
+\forall x \neq a,\quad f(x) \leq g(x) \leq h(x)
+\]
+y además:
+\[
+\lim_{x \to a} f(x) = \lim_{x \to a} h(x) = L
+\]
+Entonces:
+\[
+\lim_{x \to a} g(x) = L
+\]
+
+\subsection{Teorema de Continuidad de Composición}
+Si $\lim_{x \to a} f(x) = L$ y $\lim_{x \to L} g(x) = g(L)$ (i.e. $g$ es continua en $L$), entonces:
+\[
+\lim_{x \to a} g(f(x)) = g\left( \lim_{x \to a} f(x) \right) = g(L)
+\]
+
+\section{Derivadas}
+
+\subsection{Definición de Derivada}
+La derivada de $f$ en $a$ es:
+\[
+f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}
+\]
+
+\subsection{Teorema de Rolle}
+Sea $f: [a,b] \to \mathbb{R}$ tal que:
+\begin{itemize}
+  \item $f$ es continua en $[a,b]$,
+  \item $f$ es derivable en $(a,b)$,
+  \item $f(a) = f(b)$.
+\end{itemize}
+Entonces existe $c \in (a,b)$ tal que:
+\[
+f'(c) = 0
+\]
+
+\subsection{Teorema del Valor Medio (Lagrange)}
+Si $f$ es continua en $[a,b]$ y derivable en $(a,b)$, entonces existe $c \in (a,b)$ tal que:
+\[
+f'(c) = \frac{f(b) - f(a)}{b - a}
+\]
+
+\section{Integrales}
+
+\subsection{Teorema Fundamental del Cálculo (Parte I)}
+Si $f$ es continua en $[a,b]$ y definimos:
+\[
+F(x) = \int_a^x f(t)\,dt
+\]
+entonces $F$ es derivable y:
+\[
+F'(x) = f(x)
+\]
+
+\subsection{Teorema Fundamental del Cálculo (Parte II)}
+Si $f$ es continua en $[a,b]$ y $F$ es una primitiva de $f$ (i.e. $F' = f$), entonces:
+\[
+\int_a^b f(x)\,dx = F(b) - F(a)
+\]
+
+\subsection{Cambio de Variable}
+Si $x = g(u)$ es una función continua con derivada continua, y $f$ es continua, entonces:
+\[
+\int f(g(u))g'(u)\,du = \int f(x)\,dx
+\]
+
+\subsection{Integración por Partes}
+Si $u=u(x)$ y $v=v(x)$ son funciones derivables, entonces:
+\[
+\int u\,dv = uv - \int v\,du
+\]
+
+\section{Sucesiones y Series (si aplica en tu Olimpiada)}
+
+\subsection{Límites de Sucesiones}
+Una sucesión $(a_n)$ converge a $L$ si:
+\[
+\forall \varepsilon > 0,\ \exists N \in \mathbb{N} \text{ tal que } n > N \Rightarrow |a_n - L| < \varepsilon
+\]
+
+\subsection{Serie Geométrica}
+Para $|r| < 1$:
+\[
+\sum_{n=0}^\infty ar^n = \frac{a}{1 - r}
+\]
+
+\subsection{Criterio de la Razón}
+Sea $\sum a_n$, con $a_n \neq 0$ y definamos:
+\[
+L = \lim_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right|
+\]
+Entonces:
+\begin{itemize}
+  \item Si $L < 1$ la serie converge.
+  \item Si $L > 1$ o $L = \infty$, la serie diverge.
+  \item Si $L = 1$, el criterio no decide.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Límite y Continuidad}
+
+\subsection{Teorema del Sándwich}
+(Squeeze Theorem): Si $f(x) \leq g(x) \leq h(x)$ cerca de $a$ (excepto quizás en $a$), y $\lim_{x \to a} f(x) = \lim_{x \to a} h(x) = L$, entonces $\lim_{x \to a} g(x) = L$.
+
+\subsection{Teorema de Bolzano}
+Si $f$ es continua en $[a,b]$ y $f(a)f(b) < 0$, entonces existe $c \in (a,b)$ tal que $f(c) = 0$.
+
+\subsection{Teorema de Weierstrass}
+Si $f$ es continua en $[a,b]$, entonces $f$ alcanza su máximo y mínimo absolutos en $[a,b]$.
+
+\subsection{Teorema de Darboux (Propiedad del valor intermedio para derivadas)}
+Si $f$ es derivable en $[a,b]$, entonces $f'$ tiene la propiedad del valor intermedio: si $f'(a) < k < f'(b)$, entonces existe $c \in (a,b)$ tal que $f'(c) = k$.
+
+\section{Derivadas y Aplicaciones}
+
+\subsection{Teorema de Fermat}
+Si $f$ tiene un extremo local en $c$ y es derivable en $c$, entonces $f'(c) = 0$.
+
+\subsection{Criterio de la Primera Derivada}
+Si $f'$ cambia de signo en $c$, entonces $f$ tiene un extremo local en $c$:
+\begin{itemize}
+  \item $f'$ cambia de $+$ a $-$: máximo local.
+  \item $f'$ cambia de $-$ a $+$: mínimo local.
+\end{itemize}
+
+\subsection{Criterio de la Segunda Derivada}
+Si $f''(c) > 0$, entonces $f$ tiene mínimo local en $c$; si $f''(c) < 0$, entonces tiene máximo local.
+
+\subsection{Convexidad y Concavidad}
+\begin{itemize}
+  \item $f''(x) > 0$: $f$ es convexa (curva hacia arriba).
+  \item $f''(x) < 0$: $f$ es cóncava (curva hacia abajo).
+  \item $f''(x_0) = 0$ y cambia de signo: punto de inflexión.
+\end{itemize}
+
+\section{Integración y Teoremas Avanzados}
+
+\subsection{Integral Impropia}
+Si $f$ es continua en $[a,\infty)$, entonces:
+\[
+\int_a^\infty f(x)\,dx = \lim_{b \to \infty} \int_a^b f(x)\,dx
+\]
+
+\subsection{Criterio de Convergencia de Cauchy para Integrales}
+$\int_a^\infty f(x)\,dx$ converge $\Leftrightarrow$ para todo $\varepsilon > 0$ existe $M > a$ tal que:
+\[
+\left| \int_u^v f(x)\,dx \right| < \varepsilon,\quad \forall u,v > M
+\]
+
+\subsection{Integrales de Riemann con Funciones Acotadas}
+Si $f$ es acotada en $[a,b]$ y el conjunto de discontinuidades tiene medida cero, entonces $f$ es integrable en el sentido de Riemann.
+
+\section{Sucesiones y Series}
+
+\subsection{Criterio de Cauchy para Sucesiones}
+Una sucesión $(a_n)$ converge $\Leftrightarrow$ es de Cauchy, i.e.:
+\[
+\forall \varepsilon > 0, \exists N: m,n > N \Rightarrow |a_n - a_m| < \varepsilon
+\]
+
+\subsection{Serie de Taylor}
+Si $f$ tiene derivadas de todos los órdenes en un entorno de $a$, entonces:
+\[
+f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!}(x - a)^n
+\]
+El error del truncamiento a orden $n$ está dado por el término de Lagrange:
+\[
+R_n(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!}(x - a)^{n+1},\quad \xi \in (a,x)
+\]
+
+\subsection{Serie de Maclaurin}
+Caso particular de la serie de Taylor con $a = 0$:
+\[
+f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(0)}{n!}x^n
+\]
+
+\section{Teoremas de Análisis Real útiles en competencia}
+
+\subsection{Desigualdad de Cauchy-Schwarz}
+Para $a_i, b_i \in \mathbb{R}$:
+\[
+\left( \sum_{i=1}^n a_i b_i \right)^2 \leq \left( \sum_{i=1}^n a_i^2 \right)\left( \sum_{i=1}^n b_i^2 \right)
+\]
+
+\subsection{Desigualdad de Jensen (versión continua)}
+Si $f$ es convexa y $\mu$ es una medida de probabilidad, entonces:
+\[
+f\left( \int x\,d\mu \right) \leq \int f(x)\,d\mu
+\]
+
+\subsection{Teorema del Valor Medio para Integrales}
+Si $f$ es continua en $[a,b]$, entonces existe $c \in [a,b]$ tal que:
+\[
+\int_a^b f(x)\,dx = f(c)(b-a)
+\]
+
+
+\newpage
+
+\section{Teoremas sobre Continuidad Uniforme}
+
+\subsection{Teorema de Heine–Cantor}
+Toda función continua $f: [a,b] \rightarrow \mathbb{R}$ en un intervalo cerrado y acotado es uniformemente continua.
+
+\subsection{Teorema de la Sucesión de Cauchy Uniforme}
+Sea $f: A \rightarrow \mathbb{R}$. Si para toda $\varepsilon > 0$ existe $\delta > 0$ tal que $|x - y| < \delta \Rightarrow |f(x) - f(y)| < \varepsilon$ para todos $x, y \in A$, entonces $f$ es uniformemente continua.
+
+\section{Teoremas sobre Derivadas y Monotonicidad}
+
+\subsection{Teorema de la Monotonía}
+Si $f'$ existe y:
+\begin{itemize}
+  \item $f'(x) > 0$ en $(a,b)$, entonces $f$ es estrictamente creciente en $(a,b)$.
+  \item $f'(x) < 0$ en $(a,b)$, entonces $f$ es estrictamente decreciente.
+\end{itemize}
+
+\subsection{Regla de l'Hôpital}
+Si $\lim_{x \to a} f(x) = \lim_{x \to a} g(x) = 0$ o $\infty$ y $\lim_{x \to a} \frac{f'(x)}{g'(x)} = L$, entonces:
+\[
+\lim_{x \to a} \frac{f(x)}{g(x)} = L
+\]
+siempre que $g'(x) \neq 0$ cerca de $a$.
+
+\section{Convexidad y Funciones Monótonas}
+
+\subsection{Caracterización de Funciones Convexas}
+$f$ es convexa en $(a,b)$ $\Leftrightarrow$ su derivada $f'$ es creciente (si $f$ es diferenciable).
+
+\subsection{Jensen Discreta (caso finito)}
+Si $f$ es convexa y $x_1, \dots, x_n \in \text{Dom}(f)$:
+\[
+f\left( \frac{x_1 + \cdots + x_n}{n} \right) \leq \frac{f(x_1) + \cdots + f(x_n)}{n}
+\]
+
+\section{Teoremas de Punto Fijo}
+
+\subsection{Teorema de Brouwer (1D)}
+Si $f: [a,b] \to [a,b]$ es continua, entonces existe $c \in [a,b]$ tal que $f(c) = c$.
+
+\subsection{Teorema del Valor Intermedio Generalizado}
+Si $f$ es continua en $[a,b]$, toma todos los valores entre $f(a)$ y $f(b)$: $\forall y \in [f(a),f(b)]$, $\exists c \in [a,b]: f(c) = y$.
+
+\section{Lemas útiles y límites notables}
+
+\subsection{Lema de Stolz–Cesàro (sucesiones)}
+Sean $(a_n), (b_n)$ sucesiones reales con $b_n$ estrictamente creciente y $\lim b_n = \infty$. Si $\lim \frac{a_{n+1} - a_n}{b_{n+1} - b_n} = L$, entonces:
+\[
+\lim_{n \to \infty} \frac{a_n}{b_n} = L
+\]
+
+\subsection{Límites Notables}
+\begin{align*}
+\lim_{x \to 0} \frac{\sin x}{x} &= 1 \\
+\lim_{x \to 0} \frac{1 - \cos x}{x^2} &= \frac{1}{2} \\
+\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x &= e
+\end{align*}
+
+\section{11. Cálculo Multivariable (opcional, para olimpiadas tipo Putnam)}
+
+\subsection{Teorema de la Derivada Parcial}
+Si $f(x,y)$ es diferenciable en $(a,b)$, entonces existen derivadas parciales y el plano tangente está dado por:
+\[
+z = f(a,b) + f_x(a,b)(x - a) + f_y(a,b)(y - b)
+\]
+
+\subsection{Criterio de Hessiano (máximos/mínimos locales)}
+Para una función $f(x,y)$ diferenciable dos veces:
+\[
+H = 
+\begin{bmatrix}
+f_{xx} & f_{xy} \\
+f_{yx} & f_{yy}
+\end{bmatrix},\quad D = \det(H)
+\]
+Entonces:
+\begin{itemize}
+  \item $D > 0$, $f_{xx} > 0$: mínimo local.
+  \item $D > 0$, $f_{xx} < 0$: máximo local.
+  \item $D < 0$: punto silla.
+  \item $D = 0$: prueba inconclusa.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\section{12. Teoremas de Análisis Real y Funcional}
+
+\subsection{Teorema de Baire (Categoría de Baire)}
+En un espacio métrico completo, la intersección numerable de abiertos densos es densa.
+
+\subsection{Teorema de Bolzano–Weierstrass}
+Toda sucesión acotada en \(\mathbb{R}^n\) tiene una subsucesión convergente.
+
+\subsection{Teorema de Arzelà–Ascoli}
+Una familia \(\mathcal{F}\) de funciones continuas en \([a,b]\) es relativamente compacta (toda sucesión tiene una subsucesión convergente uniformemente) si es:
+\begin{itemize}
+  \item Uniformemente acotada.
+  \item Equicontinua.
+\end{itemize}
+
+\subsection{Teorema de Ascoli (versión débil)}
+Si \(f_n\) son funciones acotadas y equicontinuas en \([a,b]\), entonces existe una subsucesión que converge uniformemente a una función continua.
+
+\subsection{Teorema de Dini}
+Si \(f_n \uparrow f\) puntualmente en un intervalo compacto y \(f_n, f\) son continuas, entonces la convergencia es uniforme.
+
+\subsection{Teorema de Riesz (completo)}
+Si \(f_n\) es una sucesión en \(L^p([a,b])\) tal que \(f_n \to f\) en norma, entonces existe una subsucesión que converge casi en todas partes.
+
+\section{Criterios de Convergencia de Series}
+
+\subsection{Criterio de la Serie Alternante (Leibniz)}
+Si \(a_n \geq 0\), \(a_n \downarrow 0\), entonces la serie \(\sum (-1)^n a_n\) converge.
+
+\subsection{Criterio de la Serie de Dirichlet}
+Si \(a_n\) es monótona y tiende a 0, y \(b_n\) es una sucesión acotada de suma parcial, entonces \(\sum a_n b_n\) converge.
+
+\subsection{Criterio de Abel}
+Si \(\sum a_n\) converge y \(b_n\) es monótona acotada, entonces \(\sum a_n b_n\) converge.
+
+\section{Teoremas en Cálculo Multivariable}
+
+\subsection{Teorema de Fubini}
+Sea \(f: A \subset \mathbb{R}^2 \to \mathbb{R}\) integrable. Si \(f(x,y)\) es medible y absolutamente integrable, entonces:
+\[
+\int_A f(x,y)\,dA = \int \left( \int f(x,y)\,dy \right) dx = \int \left( \int f(x,y)\,dx \right) dy
+\]
+
+\subsection{Teorema de cambio de variables}
+Sea \(T: U \to V\) un difeomorfismo y \(f\) integrable en \(V\), entonces:
+\[
+\int_V f(x)\,dx = \int_U f(T(u)) \left|\det DT(u)\right|\,du
+\]
+
+\subsection{Teorema de Green}
+\[
+\oint_{\partial D} (P\,dx + Q\,dy) = \iint_D \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\,dx\,dy
+\]
+
+\subsection{Teorema de Stokes}
+Para una superficie \(S\) orientada con frontera \(\partial S\):
+\[
+\int_S (\nabla \times \vec{F}) \cdot d\vec{S} = \oint_{\partial S} \vec{F} \cdot d\vec{r}
+\]
+
+\subsection{Teorema de la Divergencia (Gauss)}
+Sea \(V\) un volumen limitado con frontera suave \(\partial V\):
+\[
+\iiint_V \nabla \cdot \vec{F} \,dV = \iint_{\partial V} \vec{F} \cdot \vec{n} \,dS
+\]
+
+\section{Desigualdades Fundamentales}
+
+\subsection{Desigualdad de Taylor (forma de Lagrange)}
+Si \(f \in C^{n+1}([a,b])\), entonces:
+\[
+f(x) = P_n(x) + R_n(x),\quad |R_n(x)| \leq \frac{\max |f^{(n+1)}(t)|}{(n+1)!} |x - a|^{n+1}
+\]
+
+\subsection{Desigualdad de Hölder}
+Para \(1 < p, q < \infty\) con \(\frac{1}{p} + \frac{1}{q} = 1\):
+\[
+\sum |a_i b_i| \leq \left( \sum |a_i|^p \right)^{1/p} \left( \sum |b_i|^q \right)^{1/q}
+\]
+
+\subsection{Desigualdad de Minkowski}
+\[
+\left( \sum |a_i + b_i|^p \right)^{1/p} \leq \left( \sum |a_i|^p \right)^{1/p} + \left( \sum |b_i|^p \right)^{1/p}
+\]
+
+
+
+
+
+
+
+
+
+\newpage
+
+\section{Análisis Real Profundo}
+
+\subsection{Teorema de Egorov}
+Si \(f_n \to f\) casi uniformemente en un conjunto de medida finita, entonces para todo \(\varepsilon > 0\) existe un subconjunto \(A\) con medida \(< \varepsilon\) tal que \(f_n \to f\) uniformemente en el complemento de \(A\).
+
+\subsection{Teorema de Lusin}
+Si \(f: [a,b] \to \mathbb{R}\) es medible y finita, entonces para todo \(\varepsilon > 0\), existe un conjunto cerrado \(K \subset [a,b]\) tal que \(f|_K\) es continua y \(\mu([a,b] \setminus K) < \varepsilon\).
+
+\subsection{Teorema de Vitali (Criterio de convergencia uniforme en medida)}
+Una sucesión de funciones medibles y acotadas \(f_n\) en \([a,b]\) converge en medida a \(f\) si y solo si es uniformemente integrable y \(f_n \to f\) en medida.
+
+\subsection{Teorema de la Convergencia Dominada (Lebesgue)}
+Si \(f_n \to f\) puntualmente y existe \(g \in L^1\) tal que \(|f_n| \leq g\), entonces:
+\[
+\int f_n \to \int f
+\]
+
+\subsection{Teorema de la Convergencia Monótona}
+Si \(f_n \uparrow f\) con \(f_n \geq 0\), entonces:
+\[
+\int f_n \to \int f
+\]
+
+\section{17. Topología y Análisis en \(\mathbb{R}^n\)}
+
+\subsection{Teorema de Borel–Lebesgue (compactación)}
+En \(\mathbb{R}^n\), un subconjunto es compacto si y solo si es cerrado y acotado.
+
+\subsection{Teorema de Lindelöf (R\(^{n}\) es separable)}
+Toda colección de abiertos tiene una subcolección numerable que cubre el mismo conjunto.
+
+\subsection{Teorema de Tietze}
+Si \(X\) es normal y \(f: A \to \mathbb{R}\) continua en un cerrado \(A \subset X\), entonces existe \(F: X \to \mathbb{R}\) continua que extiende \(f\).
+
+\section{18. Análisis Funcional Básico}
+
+\subsection{Teorema de Hahn–Banach (versión real)}
+Sea \(p: V \to \mathbb{R}\) una función sublineal y \(f: U \to \mathbb{R}\) lineal tal que \(f \leq p\) en \(U \subset V\), entonces \(f\) se puede extender a todo \(V\) conservando la desigualdad.
+
+\subsection{Principio del Punto Fijo de Banach}
+Si \(T: X \to X\) es una contracción en un espacio métrico completo \((X, d)\), entonces \(T\) tiene un único punto fijo \(x^*\) tal que:
+\[
+T(x^*) = x^*
+\]
+
+\subsection{Teorema de Riesz (dual de \(L^p\))}
+El dual de \(L^p([a,b])\) es \(L^q([a,b])\) donde \(\frac{1}{p} + \frac{1}{q} = 1\).
+
+\section{19. Aplicaciones Clásicas en EDOs y Cálculo Variacional}
+
+\subsection{Teorema de existencia y unicidad de Picard–Lindelöf}
+Para la EDO \(y' = f(x, y)\), si \(f\) es continua y Lipschitz en \(y\), existe solución única en un entorno del punto inicial.
+
+\subsection{Ecuaciones Euler–Lagrange (Cálculo Variacional)}
+Si \(F[y] = \int_a^b L(x, y, y')\,dx\) alcanza un mínimo, entonces \(y\) satisface:
+\[
+\frac{d}{dx} \left( \frac{\partial L}{\partial y'} \right) = \frac{\partial L}{\partial y}
+\]
+
+\section{20. Teoremas de Continuidad y Derivabilidad en R\(^{n}\)}
+
+\subsection{Teorema de la función inversa}
+Si \(f: \mathbb{R}^n \to \mathbb{R}^n\) es diferenciable y \(Df(a)\) es invertible, entonces existe un vecindario de \(a\) donde \(f\) es biyectiva y \(f^{-1}\) es diferenciable.
+
+\subsection{Teorema de la función implícita}
+Si \(F(x, y) = 0\) y \(F\) es diferenciable, con \(\frac{\partial F}{\partial y} \neq 0\), entonces se puede resolver localmente como \(y = g(x)\) y \(g\) es diferenciable.
+
+\subsection{Regla de la cadena en múltiples variables}
+Si \(z = f(x, y)\), \(x = x(t)\), \(y = y(t)\), entonces:
+\[
+\frac{dz}{dt} = \frac{\partial f}{\partial x} \frac{dx}{dt} + \frac{\partial f}{\partial y} \frac{dy}{dt}
+\]
+
+\newpage
+
+
+\section{21. Desigualdades Clásicas y Utilitarias}
+
+\subsection{Desigualdad de Bernoulli}
+Para \(x > -1\) y \(r \in \mathbb{R}\), \(r \geq 0\):
+\[
+(1 + x)^r \geq 1 + rx
+\]
+
+\subsection{Desigualdad de Cauchy–Schwarz (integral)}
+Para \(f, g \in L^2([a,b])\):
+\[
+\left( \int_a^b f(x)g(x)\,dx \right)^2 \leq \int_a^b f(x)^2\,dx \cdot \int_a^b g(x)^2\,dx
+\]
+
+\subsection{Desigualdad Logarítmica}
+\[
+\frac{x - 1}{x} \leq \ln x \leq x - 1,\quad x > 0
+\]
+
+\subsection{Desigualdad entre medias}
+Para \(a_1, \dots, a_n > 0\):
+\[
+\text{media armónica} \leq \text{media geométrica} \leq \text{media aritmética} \leq \text{media cuadrática}
+\]
+
+\section{22. Teoremas Clásicos de Estimación y Aproximación}
+
+\subsection{Fórmula de Stirling}
+\[
+n! \sim \sqrt{2\pi n} \left( \frac{n}{e} \right)^n
+\]
+
+\subsection{Desigualdad de Taylor–Lagrange (forma integral)}
+\[
+R_n(x) = \int_a^x \frac{(x-t)^n}{n!} f^{(n+1)}(t)\,dt
+\]
+
+\subsection{Aproximación de Euler para logaritmos}
+\[
+\ln(1 + x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \cdots,\quad |x| < 1
+\]
+
+\subsection{Aproximación de arctangente}
+\[
+\arctan(x) = x - \frac{x^3}{3} + \frac{x^5}{5} - \cdots,\quad |x| \leq 1
+\]
+
+\section{23. Teoremas sobre Series Clásicas}
+
+\subsection{Serie de Gregory–Leibniz}
+\[
+\sum_{n=0}^\infty \frac{(-1)^n}{2n+1} = \frac{\pi}{4}
+\]
+
+\subsection{Serie de Basel (Euler)}
+\[
+\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}
+\]
+
+\subsection{Transformada de Abel (suma por partes discreta)}
+Si \(A_n = \sum_{k=1}^n a_k\), entonces:
+\[
+\sum_{k=1}^n a_k b_k = A_n b_n - \sum_{k=1}^{n-1} A_k (b_{k+1} - b_k)
+\]
+
+\section{24. Resultados Técnicos para Cálculo de Límites}
+
+\subsection{Lema de Cesàro}
+Si \(\lim a_n = L\), entonces:
+\[
+\lim \left( \frac{1}{n} \sum_{k=1}^n a_k \right) = L
+\]
+
+\subsection{Teorema del Sandwich (Teorema del Encajonamiento)}
+Si \(a_n \leq b_n \leq c_n\) y \(\lim a_n = \lim c_n = L\), entonces \(\lim b_n = L\).
+
+\subsection{L'Hôpital (forma avanzada)}
+Si \(\lim_{x \to c} \frac{f(x)}{g(x)} = \frac{0}{0}\) o \(\frac{\infty}{\infty}\), y existen derivadas en un entorno:
+\[
+\lim_{x \to c} \frac{f(x)}{g(x)} = \lim_{x \to c} \frac{f'(x)}{g'(x)}
+\]
+
+\section{25. Funciones Especiales}
+
+\subsection{Identidad de Euler para senos}
+\[
+\sin x = x \prod_{n=1}^\infty \left(1 - \frac{x^2}{n^2 \pi^2} \right)
+\]
+
+\subsection{Serie de Fourier de una función impar en \([-L, L]\)}
+\[
+f(x) = \sum_{n=1}^\infty b_n \sin \left( \frac{n\pi x}{L} \right),\quad b_n = \frac{2}{L} \int_0^L f(x) \sin \left( \frac{n\pi x}{L} \right)\,dx
+\]
+
+\subsection{Teorema de Parseval}
+Si \(f\) tiene desarrollo en serie de Fourier:
+\[
+\sum_{n=-\infty}^\infty |c_n|^2 = \frac{1}{2\pi} \int_{-\pi}^{\pi} |f(x)|^2\,dx
+\]
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\section{Desigualdades Notables}
+
+\subsection{Desigualdad AM–GM}
+\[
+\frac{a_1 + a_2 + \cdots + a_n}{n} \geq \sqrt[n]{a_1 a_2 \cdots a_n},\quad \text{con igualdad si y solo si } a_1 = \cdots = a_n
+\]
+
+\subsection{Desigualdad de Cauchy–Schwarz}
+\[
+\left( \sum_{i=1}^n a_i b_i \right)^2 \leq \left( \sum_{i=1}^n a_i^2 \right) \left( \sum_{i=1}^n b_i^2 \right)
+\]
+
+\subsection{Desigualdad de Hölder}
+Para \(p, q > 1\) con \(\frac{1}{p} + \frac{1}{q} = 1\):
+\[
+\sum_{i=1}^n |a_i b_i| \leq \left( \sum |a_i|^p \right)^{1/p} \left( \sum |b_i|^q \right)^{1/q}
+\]
+
+\subsection{Desigualdad de Jensen (función convexa)}
+Si \(f\) es convexa y \(\sum \lambda_i = 1\), \(\lambda_i \geq 0\):
+\[
+f\left( \sum \lambda_i x_i \right) \leq \sum \lambda_i f(x_i)
+\]
+
+\subsection{Bernoulli}
+\[
+(1 + x)^r \geq 1 + rx,\quad x > -1, r \in \mathbb{R}, r \geq 1
+\]
+
+\subsection{Desigualdad logarítmica}
+\[
+\frac{x - 1}{x} \leq \ln x \leq x - 1,\quad x > 0
+\]
+
+\subsection{Inequidad de Titu (Engel)}
+\[
+\sum_{i=1}^n \frac{a_i^2}{b_i} \geq \frac{\left( \sum a_i \right)^2}{\sum b_i}
+\]
+
+\subsection{Chebyshev}
+Si \(a_1 \leq \cdots \leq a_n\), \(b_1 \leq \cdots \leq b_n\), entonces:
+\[
+\frac{1}{n} \sum a_i b_i \geq \left( \frac{1}{n} \sum a_i \right)\left( \frac{1}{n} \sum b_i \right)
+\]
+
+\section{Trucos Asintóticos Clásicos}
+
+\subsection{Expansiones de Taylor útiles}
+\[
+\ln(1 + x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \cdots,\quad |x| < 1
+\]
+\[
+(1 + x)^r = 1 + rx + \frac{r(r - 1)}{2}x^2 + \cdots
+\]
+\[
+\sin x \sim x - \frac{x^3}{6}, \quad \cos x \sim 1 - \frac{x^2}{2}
+\]
+
+\subsection{Equivalencias notables para límites}
+\[
+\lim_{x \to 0} \frac{\sin x}{x} = 1, \quad \lim_{x \to 0} \frac{\tan x}{x} = 1
+\]
+\[
+\lim_{x \to 0} \frac{1 - \cos x}{x^2} = \frac{1}{2}
+\]
+\[
+\lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^n = e
+\]
+
+\subsection{Stirling}
+\[
+n! \sim \sqrt{2\pi n} \left( \frac{n}{e} \right)^n
+\]
+Útil para cotar factoriales en límites, sumas o series.
+
+\subsection{Dominancia asintótica}
+Si \(f(n) = O(g(n))\), entonces:
+\[
+\limsup_{n \to \infty} \left| \frac{f(n)}{g(n)} \right| < \infty
+\]
+
+\subsection{Aproximaciones asintóticas útiles}
+\[
+\sum_{k=1}^n \frac{1}{k} \sim \ln n + \gamma
+\]
+\[
+\sum_{k=1}^n k^p \sim \frac{n^{p+1}}{p+1},\quad p > -1
+\]
+
+\section{Técnicas de Estimación}
+
+\subsection{Encajonamiento (Sandwich)}
+Si \(f_n \leq g_n \leq h_n\), y \(\lim f_n = \lim h_n = L\), entonces \(\lim g_n = L\).
+
+\subsection{Comparación directa en sumas y series}
+\[
+\text{Si } a_n \leq b_n,\quad \sum b_n \text{ converge } \Rightarrow \sum a_n \text{ converge}
+\]
+
+\subsection{Integral de Riemann como suma}
+\[
+\sum_{k=1}^n f\left(\frac{k}{n}\right) \cdot \frac{1}{n} \approx \int_0^1 f(x)\,dx
+\]
+
+\subsection{Transformación de Abel}
+Si \(A_n = \sum_{k=1}^n a_k\):
+\[
+\sum a_k b_k = A_n b_n - \sum A_k (b_{k+1} - b_k)
+\]
+
+\subsection{Cambio inteligente de variable}
+Para simplificar raíces, logaritmos o integrales complicadas:  
+Ejemplo: \(x = \frac{1}{t}\), \(x = \tan \theta\), \(x = e^u\)
+
+\subsection{Estimación tipo trapezoidal}
+\[
+\int_a^b f(x)\,dx \approx \frac{b - a}{2} [f(a) + f(b)]
+\]
+
+
+
+
+
+
+
+\newpage
+
+
+\subsection{Desigualdad de Nesbitt (3 variables positivas)}
+\[
+\frac{a}{b + c} + \frac{b}{a + c} + \frac{c}{a + b} \geq \frac{3}{2}
+\]
+
+\subsection{Desigualdad de Karamata (convexidad y orden mayor)}
+Si \(f\) es convexa y \(x \prec y\) (mayor en orden), entonces:
+\[
+\sum f(x_i) \leq \sum f(y_i)
+\]
+
+\subsection{Desigualdad de Minkowski (versión para normas)}
+\[
+\left( \sum_{i=1}^n |a_i + b_i|^p \right)^{1/p} \leq \left( \sum |a_i|^p \right)^{1/p} + \left( \sum |b_i|^p \right)^{1/p}
+\]
+
+\subsection{Desigualdad de Hadamard}
+Para vectores \(x, y\) en \(\mathbb{R}^n\):
+\[
+\det(A)^2 \leq \prod_{i=1}^n \| \text{fila}_i \|^2
+\]
+
+\subsection{Desigualdad de Wilker}
+Para \(x \in (0, \frac{\pi}{2})\):
+\[
+\frac{\sin x}{x} + \frac{\tan x}{x} > 2
+\]
+
+\section{Trucos Asintóticos Potentes}
+
+\subsection{Expansión de binomio para exponentes arbitrarios}
+\[
+(1 + x)^\alpha = \sum_{n=0}^\infty \binom{\alpha}{n} x^n,\quad |x| < 1
+\]
+
+\subsection{Expansión de Gamma cerca de enteros}
+\[
+\Gamma(n + \varepsilon) \sim \Gamma(n) \cdot \left(1 + \varepsilon \psi(n) \right),\quad \varepsilon \to 0
+\]
+donde \(\psi(n)\) es la función digamma.
+
+\subsection{Logaritmo armónico parcial}
+\[
+\sum_{k=1}^n \frac{1}{k} = \ln n + \gamma + \frac{1}{2n} - \frac{1}{12n^2} + \cdots
+\]
+
+\subsection{Equivalencias funcionales útiles}
+\[
+\arcsin x \sim x,\quad \arctan x \sim x,\quad \sqrt{1 + x} \sim 1 + \frac{x}{2},\quad x \to 0
+\]
+
+\subsection{Lemas de Tauber y Abel (resumen)}
+- Si \(\sum a_n\) converge, entonces su función generadora \(f(x) = \sum a_n x^n\) tiende a \(S\) cuando \(x \to 1^{-}\).
+- Inverso es falso sin hipótesis extra.
+
+\section{Técnicas de Estimación Más Finas}
+
+\subsection{Sumas por integrales (Estimación de Euler–Maclaurin)}
+\[
+\sum_{k=a}^b f(k) \approx \int_a^b f(x)\,dx + \frac{f(a) + f(b)}{2}
+\]
+
+\subsection{Series alternadas acotadas}
+Si \(a_n\) decrece y \(a_n \to 0\), entonces:
+\[
+\left| \sum_{k=n}^\infty (-1)^k a_k \right| \leq a_n
+\]
+
+\subsection{Uso de simetría para acotación}
+Para funciones pares o impares:
+\[
+\int_{-a}^a f(x)\,dx = 0 \quad (\text{si } f \text{ impar}),\quad = 2 \int_0^a f(x)\,dx \quad (\text{si } f \text{ par})
+\]
+
+\subsection{Acotación tipo telescópica}
+\[
+\sum_{k=1}^n \left( \frac{1}{k(k+1)} \right) = 1 - \frac{1}{n+1}
+\]
+
+\subsection{Técnica de escalamiento}
+Si \(f(x)\) cumple cierta propiedad en \(x\), probarla en \(x = 1\) y reescalar con \(x = ky\), \(x = y^2\), etc.
+
+\subsection{Cambio a logaritmo para productos}
+\[
+\prod_{k=1}^n (1 + a_k) = \exp\left( \sum \ln(1 + a_k) \right) \approx \exp\left( \sum a_k \right)
+\quad \text{si } |a_k| \ll 1
+\]
+
+
+
+
+
+
+\end{document}

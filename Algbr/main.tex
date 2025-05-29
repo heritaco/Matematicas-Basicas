@@ -1,0 +1,534 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\title{Teoremas Fundamentales de Álgebra Lineal (Matrices)}
+\author{Compilado para Olimpiadas y Putnam}
+\begin{document}
+
+\maketitle
+
+\section*{1. Teoremas Estructurales}
+
+\subsection*{1.1 Teorema de Rango–Nulidad}
+Sea \( T: V \to W \) una transformación lineal entre espacios vectoriales de dimensión finita. Entonces:
+\[
+\dim(\ker T) + \dim(\text{Im } T) = \dim(V)
+\]
+
+\subsection*{1.2 Teorema de Cayley–Hamilton}
+Toda matriz cuadrada \( A \in M_n(\mathbb{F}) \) satisface su propio polinomio característico:
+\[
+p_A(A) = 0
+\]
+
+\subsection*{1.3 Teorema Espectral (matrices simétricas reales)}
+Sea \( A \in \mathbb{R}^{n \times n} \) simétrica. Entonces:
+- \( A \) es diagonalizable.
+- Sus valores propios son reales.
+- Existe una base ortonormal de vectores propios.
+
+\subsection*{1.4 Teorema de Jordan}
+Toda matriz cuadrada \( A \in \mathbb{C}^{n \times n} \) es semejante a una matriz en forma canónica de Jordan:
+\[
+A \sim J = \text{diag}(J_1, \dots, J_k)
+\]
+
+\section*{2. Determinantes y Trazas}
+
+\subsection*{2.1 Propiedades fundamentales}
+- \(\det(AB) = \det(A)\det(B)\)
+- \(\text{tr}(A + B) = \text{tr}(A) + \text{tr}(B)\)
+- \(\text{tr}(A^T) = \text{tr}(A)\)
+- \(\det(A^T) = \det(A)\)
+
+\subsection*{2.2 Trazas y valores propios}
+Si \( A \in \mathbb{C}^{n \times n} \), entonces:
+\[
+\text{tr}(A) = \sum \lambda_i, \quad \det(A) = \prod \lambda_i
+\]
+donde \(\lambda_i\) son los valores propios de \(A\), contados con multiplicidad.
+
+\section*{3. Ortogonalidad y Positividad}
+
+\subsection*{3.1 Teorema de Descomposición QR}
+Toda matriz \( A \in \mathbb{R}^{m \times n} \) con \(m \geq n\) admite una factorización:
+\[
+A = QR, \quad Q^T Q = I, \quad R \text{ triangular superior}
+\]
+
+\subsection*{3.2 Descomposición de Cholesky}
+Toda matriz simétrica definida positiva \(A \in \mathbb{R}^{n \times n}\) puede escribirse como:
+\[
+A = LL^T
+\]
+donde \(L\) es triangular inferior con entradas reales positivas en la diagonal.
+
+\subsection*{3.3 Descomposición espectral (matriz simétrica real)}
+\[
+A = Q \Lambda Q^T
+\]
+con \(Q\) ortogonal y \(\Lambda\) diagonal.
+
+\subsection*{3.4 Inequidad de Rayleigh}
+Para \(A\) simétrica y \(x \neq 0\):
+\[
+\lambda_{\min} \leq \frac{x^T A x}{x^T x} \leq \lambda_{\max}
+\]
+
+\section*{4. Teoremas de Similitud y Diagonalización}
+
+\subsection*{4.1 Condición de Diagonalización}
+Una matriz \(A\) es diagonalizable si y solo si existe una base de vectores propios (i.e., suma de dimensiones de autovalores = \(n\)).
+
+\subsection*{4.2 Teorema de Schur (complejo)}
+Toda matriz cuadrada \(A \in \mathbb{C}^{n \times n}\) es unitaria-equivalente a una matriz triangular superior:
+\[
+A = U T U^*, \quad \text{con } U \text{ unitaria, } T \text{ triangular superior}
+\]
+
+\subsection*{4.3 Teorema de Similitud de Matrices Normalizables}
+Toda matriz normal \(A\) (i.e., \(AA^* = A^*A\)) es unitaria diagonalizable.
+
+\section*{5. Aplicaciones Funcionales}
+
+\subsection*{5.1 Potencias de matrices diagonalizables}
+Si \(A = PDP^{-1}\), entonces:
+\[
+A^n = P D^n P^{-1}
+\]
+
+\subsection*{5.2 Exponencial de matriz (si diagonalizable)}
+\[
+e^A = P e^D P^{-1}, \quad e^D = \text{diag}(e^{\lambda_1}, \dots, e^{\lambda_n})
+\]
+
+\subsection*{5.3 Fórmula de Sylvester para funciones de matrices}
+Si \(A = \sum \lambda_i P_i\) (descomposición espectral), entonces para función \(f\) analítica:
+\[
+f(A) = \sum f(\lambda_i) P_i
+\]
+
+
+
+
+
+
+
+
+\newpage
+
+\section*{1. Definición del Determinante}
+
+Para una matriz \( A = (a_{ij}) \in \mathbb{R}^{n \times n} \), el determinante se define como:
+\[
+\det(A) = \sum_{\sigma \in S_n} \text{sgn}(\sigma) \prod_{i=1}^n a_{i,\sigma(i)}
+\]
+donde \( S_n \) es el grupo simétrico de permutaciones y \(\text{sgn}(\sigma)\) es la signatura de la permutación.
+
+---
+
+\section*{2. Propiedades Básicas}
+
+\begin{itemize}
+    \item \textbf{Linealidad por filas (o columnas):} El determinante es lineal respecto a cada fila (o columna) si las otras se mantienen fijas.
+    \item \textbf{Antisimetría:} Si dos filas (o columnas) son iguales, entonces \(\det(A) = 0\).
+    \item \textbf{Determinante de la identidad:} \(\det(I_n) = 1\).
+    \item \textbf{Determinante de matriz triangular (superior o inferior):} Es el producto de los elementos diagonales:
+    \[
+    \det(A) = \prod_{i=1}^n a_{ii}
+    \]
+\end{itemize}
+
+---
+
+\section*{3. Efecto de Operaciones Elementales}
+
+\begin{itemize}
+    \item Intercambiar dos filas (o columnas): cambia el signo del determinante.
+    \item Multiplicar una fila (o columna) por un escalar \(\lambda\): el determinante se multiplica por \(\lambda\).
+    \item Sumar a una fila un múltiplo de otra: el determinante no cambia.
+\end{itemize}
+
+---
+
+\section*{4. Propiedades Algebraicas Clave}
+
+\begin{itemize}
+    \item \textbf{Multiplicación:} \(\det(AB) = \det(A)\det(B)\)
+    \item \textbf{Transpuesta:} \(\det(A^T) = \det(A)\)
+    \item \textbf{Inversa:} Si \(A\) es invertible, entonces:
+    \[
+    \det(A^{-1}) = \frac{1}{\det(A)}
+    \]
+    \item \textbf{Potencia:} \(\det(A^n) = (\det A)^n\)
+    \item \textbf{Producto escalar:} Si \( \lambda \in \mathbb{R} \), entonces:
+    \[
+    \det(\lambda A) = \lambda^n \det(A)
+    \]
+\end{itemize}
+
+---
+
+\section*{5. Criterios de Invertibilidad}
+
+\begin{itemize}
+    \item \(A\) es invertible \( \iff \det(A) \neq 0\)
+    \item Si \( \det(A) = 0 \), entonces \( \text{rank}(A) < n \)
+\end{itemize}
+
+---
+
+\section*{6. Casos Especiales}
+
+\subsection*{6.1 Determinante de matriz diagonal}
+\[
+\det\begin{pmatrix}
+d_1 & 0 & \cdots & 0 \\
+0 & d_2 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & d_n
+\end{pmatrix} = d_1 d_2 \cdots d_n
+\]
+
+\subsection*{6.2 Determinante de una matriz con fila o columna nula}
+\[
+\det(A) = 0
+\]
+
+\subsection*{6.3 Determinante de matriz con dos filas proporcionales}
+\[
+\det(A) = 0
+\]
+
+---
+
+\section*{7. Cofactores y Teorema de Laplace}
+
+\subsection*{7.1 Cofactor}
+El cofactor \( C_{ij} \) de la entrada \( a_{ij} \) es:
+\[
+C_{ij} = (-1)^{i+j} \det(M_{ij})
+\]
+donde \(M_{ij}\) es la submatriz obtenida al eliminar la fila \(i\) y columna \(j\).
+
+\subsection*{7.2 Teorema de Laplace (Expansión por fila o columna)}
+\[
+\det(A) = \sum_{j=1}^n a_{ij} C_{ij} \quad \text{(expansión por la fila } i)
+\]
+
+---
+
+\section*{8. Determinantes con Valor Propio}
+
+Si \( \lambda_1, \dots, \lambda_n \) son los valores propios de \(A\), entonces:
+\[
+\det(A) = \prod_{i=1}^n \lambda_i
+\]
+
+---
+
+\section*{9. Aplicaciones Avanzadas}
+
+\subsection*{9.1 Regla de Cramer}
+Para \(Ax = b\), si \( \det(A) \neq 0 \), entonces:
+\[
+x_i = \frac{\det(A_i)}{\det(A)}
+\]
+donde \(A_i\) es \(A\) con su \(i\)-ésima columna reemplazada por \(b\).
+
+\subsection*{9.2 Relación con el producto mixto en \(\mathbb{R}^3\)}
+Si \( u, v, w \in \mathbb{R}^3 \), entonces:
+\[
+\det([u\, v\, w]) = u \cdot (v \times w)
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\section{Espacios Vectoriales y Subespacios Asociados a Matrices}
+
+\subsection{Núcleo o Kernel}
+Para una matriz \( A \in \mathbb{K}^{m \times n} \), el \emph{núcleo} (o kernel) es el conjunto
+\[
+\ker(A) = \{ x \in \mathbb{K}^n : Ax = 0 \}.
+\]
+
+
+\subsection{Imagen o Rango}
+La \emph{imagen} (o rango) de \( A \) es el subespacio generado por las columnas de \( A \):
+\[
+\mathrm{Im}(A) = \{ y \in \mathbb{K}^m : y = Ax \text{ para algún } x \in \mathbb{K}^n \}.
+\]
+
+
+\subsection{Teorema Rango-Nulidad}
+Para \( A \in \mathbb{K}^{m \times n} \), se cumple
+\[
+\dim(\ker A) + \dim(\mathrm{Im} A) = n.
+\]
+
+
+\subsection{Espacio fila y espacio columna}
+El \emph{espacio fila} de \( A \) es el subespacio generado por las filas de \( A \) (en \(\mathbb{K}^n\)).
+El \emph{espacio columna} es el espacio generado por sus columnas (en \(\mathbb{K}^m\)).
+
+
+\subsection{Espacio ortogonal y complemento ortogonal}
+Dado un subespacio \( V \subseteq \mathbb{K}^n \) con producto interno usual, el complemento ortogonal es
+\[
+V^\perp = \{ w \in \mathbb{K}^n : \langle v, w \rangle = 0 \ \forall v \in V \}.
+\]
+
+
+Para una matriz \( A \), el espacio ortogonal al espacio fila es el núcleo:
+\[
+(\mathrm{Fila}(A))^\perp = \ker(A).
+\]
+
+
+\section{Matrices Especiales y sus Propiedades}
+
+\subsection{Matriz simétrica}
+\( A \in \mathbb{K}^{n \times n} \) es \emph{simétrica} si \( A = A^T \).
+
+
+Los valores propios de una matriz simétrica real son todos reales.
+
+
+
+La matriz simétrica es diagonalizable por una matriz ortogonal.
+
+
+\subsection{Matriz antisimétrica}
+\( A \) es \emph{antisimétrica} si \( A = -A^T \).
+
+
+\subsection{Matriz ortogonal}
+Una matriz \( Q \in \mathbb{R}^{n \times n} \) es ortogonal si
+\[
+Q^T Q = I.
+\]
+
+
+Los valores propios de una matriz ortogonal \( Q \) cumplen \(|\lambda|=1\).
+
+
+\subsection{Matriz idempotente}
+\( A \) es idempotente si
+\[
+A^2 = A.
+\]
+
+
+\subsection{Matriz nilpotente}
+\( A \) es nilpotente si existe \( k \in \mathbb{N} \) tal que
+\[
+A^k = 0.
+\]
+
+
+\subsection{Matriz estocástica}
+Una matriz \( P \in \mathbb{R}^{n \times n} \) es estocástica si sus entradas son no negativas y cada fila suma 1:
+\[
+p_{ij} \geq 0, \quad \sum_{j=1}^n p_{ij} = 1.
+\]
+
+
+\section{Formas Canónicas}
+
+\subsection{Forma canónica de Jordan}
+Para \( A \in \mathbb{C}^{n \times n} \), existe una base en la que \( A \) se expresa como una matriz de bloques Jordan:
+\[
+J = \bigoplus_{i=1}^r J_{k_i}(\lambda_i),
+\]
+donde cada bloque \( J_{k}(\lambda) \) tiene la forma
+\[
+J_k(\lambda) = 
+\begin{pmatrix}
+\lambda & 1 & 0 & \cdots & 0 \\
+0 & \lambda & 1 & \cdots & 0 \\
+\vdots & & \ddots & \ddots & \vdots \\
+0 & 0 & \cdots & \lambda & 1 \\
+0 & 0 & \cdots & 0 & \lambda
+\end{pmatrix}.
+\]
+
+
+\subsection{Matriz diagonalizable}
+\( A \) es diagonalizable si existe invertible \( P \) tal que
+\[
+P^{-1} A P = D,
+\]
+con \( D \) diagonal.
+
+
+\subsection{Forma de Smith normal}
+Para matrices sobre enteros o anillos polinómicos, existe \( P,Q \) invertibles tales que
+\[
+P A Q = \text{diag}(d_1, d_2, \ldots, d_r, 0, \ldots, 0),
+\]
+donde \( d_i \) divide a \( d_{i+1} \).
+
+
+\section{Funciones de Matrices}
+
+\subsection{Exponencial de matrices}
+
+\subsection{Exponencial de matriz}
+\[
+e^{A} = \sum_{k=0}^\infty \frac{A^k}{k!}.
+\]
+
+
+Si \( A = P D P^{-1} \) con \( D \) diagonal, entonces
+\[
+e^A = P e^D P^{-1},
+\]
+donde \( e^D \) es la matriz diagonal con entradas \( e^{d_{ii}} \).
+
+
+\subsection{Logaritmo de matrices}
+
+\subsection{Logaritmo de matriz}
+Si \( A \) es invertible, se define el logaritmo como
+\[
+\log A = \sum_{k=1}^\infty (-1)^{k+1} \frac{(A - I)^k}{k},
+\]
+cuando esta serie converge.
+
+
+\subsection{Polinomios de matrices}
+
+Para un polinomio \( p(x) = \sum_{k=0}^m a_k x^k \), se define
+\[
+p(A) = \sum_{k=0}^m a_k A^k.
+\]
+
+\section{Valores y Vectores Propios}
+
+\subsection{Valor propio y vector propio}
+\( \lambda \in \mathbb{C} \) es valor propio si existe \( 0 \neq v \in \mathbb{C}^n \) con
+\[
+A v = \lambda v.
+\]
+
+
+\subsection{Multiplicidad algebraica y geométrica}
+La multiplicidad algebraica de \(\lambda\) es su multiplicidad como raíz del polinomio característico. La geométrica es la dimensión del espacio propio asociado.
+
+
+\subsection{Descomposición espectral}
+Si \( A \) es diagonalizable, entonces
+\[
+A = \sum_{i} \lambda_i P_i,
+\]
+donde \( P_i \) son proyectores ortogonales.
+
+
+\section{Normas y Métricas}
+
+\subsection{Norma inducida (operador)}
+Para una norma vectorial \( \| \cdot \| \),
+\[
+\|A\| = \sup_{x \neq 0} \frac{\|Ax\|}{\|x\|}.
+\]
+
+
+\subsection{Normas comunes}
+\[
+\|A\|_F = \sqrt{\sum_{i,j} |a_{ij}|^2} \quad \text{(Frobenius)},
+\]
+\[
+\|A\|_1 = \max_j \sum_i |a_{ij}|, \quad
+\|A\|_\infty = \max_i \sum_j |a_{ij}|.
+\]
+
+
+\subsection{Número de condición}
+\[
+\kappa(A) = \|A\| \cdot \|A^{-1}\|,
+\]
+mide la sensibilidad numérica de la matriz.
+
+
+\section{Sistemas Lineales y Factorizaciones}
+
+\subsection{Factorización LU}
+Para \( A \) invertible, existe \( L \) (inferior, unitriangular) y \( U \) (superior) tales que
+\[
+A = LU.
+\]
+
+
+\subsection{Factorización QR}
+Para \( A \in \mathbb{R}^{m \times n} \), existe \( Q \) ortogonal y \( R \) triangular superior con
+\[
+A = QR.
+\]
+
+
+\subsection{Factorización de Cholesky}
+Si \( A \) es simétrica definida positiva,
+\[
+A = LL^T,
+\]
+con \( L \) triangular inferior.
+
+
+\subsection{Pseudoinversa de Moore-Penrose}
+La pseudoinversa \( A^+ \) es la matriz que satisface cuatro propiedades canónicas y permite resolver sistemas sobredeterminados o subdeterminados.
+
+
+\section{Técnicas Computacionales y Trucos}
+
+\begin{itemize}
+    \item Eliminación gaussiana con pivoteo para estabilidad numérica.
+    \item Uso de invariantes como el rango para simplificar problemas.
+    \item Descomposiciones para matrices dispersas (sparse).
+\end{itemize}
+
+\section{Aplicaciones Avanzadas}
+
+\begin{itemize}
+    \item Matrices de adyacencia para grafos y problemas combinatorios.
+    \item Matrices que representan transformaciones geométricas (rotaciones, reflexiones, proyecciones).
+    \item Proyecciones ortogonales: \( P = P^2 = P^T \).
+    \item Reflexiones: \( R = I - 2 uu^T \) para \( u \) unitario.
+\end{itemize}
+
+\section*{Bonus: Álgebra Lineal Avanzada}
+
+\subsection{Teoremas de Fredholm}
+Relacionan el rango de una transformación lineal con el rango de su adjunta, y las soluciones del sistema homogéneo.
+
+
+\subsection{Espacio dual}
+El espacio dual \( V^* \) es el conjunto de todas las formas lineales \( f: V \to \mathbb{K} \).
+
+
+\subsection{Transformaciones bilineales y formas cuadráticas}
+Una forma bilineal es \( B: V \times V \to \mathbb{K} \), lineal en cada argumento. La forma cuadrática asociada es \( Q(v) = B(v,v) \).
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
